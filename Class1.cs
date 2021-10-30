@@ -22,6 +22,8 @@ namespace Ardelean_Dariana_Lab2
         public delegate void DoughnutCompleteDelegate();
         public event DoughnutCompleteDelegate DoughnutComplete;
         DispatcherTimer doughnutTimer;
+        private int mRaisedGlazed;
+
         private void InitializeComponent()
         {
             this.doughnutTimer = new DispatcherTimer();
@@ -50,6 +52,9 @@ namespace Ardelean_Dariana_Lab2
                 doughnutTimer.Interval = new TimeSpan(0, 0, value);
             }
         }
+
+        public int mRaisedVanilla { get; private set; }
+
         public void MakeDoughnuts(DoughnutType dFlavor)
         {
 
@@ -64,71 +69,45 @@ namespace Ardelean_Dariana_Lab2
             }
             doughnutTimer.Start();
         }
-        private void DoughnutCompleteHandler()
-        {
-            switch (myDoughnutMachine.Flavor)
-            {
-                case DoughnutType.Glazed:
-                    mRaisedGlazed++;
-                    txtGlazedRaised.Text = mRaisedGlazed.ToString();
-                    break;
-
-                case DoughnutType.Sugar:
-                    mRaisedSugar++;
-                    txtSugarRaised.Text = mRaisedSugar.ToString();
-                    break;
-
-                case DoughnutType.Lemon >
-                    mRaisedLemon++;
-                    txtLemonRaised.Text = mRaisedLemon.ToString();
-                    break;
-                case DoughnutType.Chocolate >
-                    mRaisedChocolate++;
-                    txtChocolateRaised.Text = mRaisedChocolate.ToString();
-                    break;
-                case DoughnutType.Vanilla >
-                    mRaisedVanilla++;
-                    txtVanillaRaised.Text = mVanillaLemon.ToString();
-                    break;
-            }
-        }
-    public enum DoughnutType
-    {
-        Glazed,
-        Sugar,
-        Lemon,
-        Chocolate,
-        Vanilla
-  
-    }
-    class Doughnut
-    {
-        private DoughnutType mFlavor;
-        public DoughnutType Flavor
-        {
-            get
-            {
-                return mFlavor;
-            }
-            set
-            {
-                mFlavor = value;
-            }
-        }
-        private readonly DateTime mTimeOfCreation;
-        public DateTime TimeOfCreation
-        {
-            get
-            {
-                return mTimeOfCreation;
-            }
-        }
-        public Doughnut(DoughnutType aFlavor)
-        {
-            mTimeOfCreation = DateTime.Now;
-            mFlavor = aFlavor;
-        }
-
-    }
         
+        public enum DoughnutType
+        {
+            Glazed,
+            Sugar,
+            Lemon,
+            Chocolate,
+            Vanilla
+
+        }
+        class Doughnut
+        {
+            private DoughnutType mFlavor;
+            public DoughnutType Flavor
+            {
+                get
+                {
+                    return mFlavor;
+                }
+                set
+                {
+                    mFlavor = value;
+                }
+            }
+            private readonly DateTime mTimeOfCreation;
+            public DateTime TimeOfCreation
+            {
+                get
+                {
+                    return mTimeOfCreation;
+                }
+            }
+            public Doughnut(DoughnutType aFlavor)
+            {
+                mTimeOfCreation = DateTime.Now;
+                mFlavor = aFlavor;
+            }
+
+        }
+
+    } 
 }
